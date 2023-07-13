@@ -1,0 +1,11 @@
+const enum HTTP_STATUS_CODE {
+    SUCCESS = 200,
+    BAD_REQUEST = 400,
+    UNAUTHORIZED = 401,
+    FORBIDDEN = 403,
+    NOT_FOUND = 404,
+    INVALID_VALUE = 422,
+    INTERNAL_SERVER_ERROR = 500,
+}
+  
+export default HTTP_STATUS_CODE;  

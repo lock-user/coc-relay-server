@@ -22,5 +22,24 @@ export default function routeGenerate() {
         });
     });
 
+    router.post("/players/:id/verifytoken", async (req, res) => {
+        const playerId = req.params.id;
+        axios({
+            method: 'POST',
+            url: constants.API_SERVER + `players/${encodeURIComponent(playerId)}/verifytoken`,
+            headers: {
+                Authorization: `Bearer ${constants.API_TOKEN}`
+            },
+            data: {
+                "token": req.body.token
+            }
+        }).then(response => {
+            res.send(response.data);
+        }).catch(error => {
+            console.error(error);
+            res.status(500);
+        });
+    });
+
     return router;
 }

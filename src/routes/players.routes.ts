@@ -1,6 +1,6 @@
 import axios from "axios";
 import constants from "../utils/constants";
-import { Router, response } from "express";
+import { Router } from "express";
 import asyncify from "express-asyncify";
 
 export default function routeGenerate() {
@@ -17,7 +17,7 @@ export default function routeGenerate() {
         }).then(response => {
             res.send(response.data);
         }).catch(error => {
-            console.log(error);
+            console.error(error);
             res.status(500);
         });
     });

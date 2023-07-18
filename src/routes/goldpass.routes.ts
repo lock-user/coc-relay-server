@@ -15,7 +15,8 @@ export default function routeGenerate() {
             .then(response => {
                 res.status(200).send(response.data);
             }).catch(error => {
-                console.error(error);if(error.response) {
+                console.error(error);
+                if(error.response) {
                     res.status(error.response.status).send(error.response.data);
                 } else {
                     res.status(500).send({ message: "Internal Server Error" });

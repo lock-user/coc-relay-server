@@ -15,10 +15,14 @@ export default function routeGenerate() {
                 Authorization: `Bearer ${constants.API_TOKEN}`
             }
         }).then(response => {
-            res.send(response.data);
+            res.status(200).send(response.data);
         }).catch(error => {
             console.error(error);
-            res.status(500);
+            if(error.response) {
+                res.status(error.response.status).send(error.response.data);
+            } else {
+                res.status(500).send({ message: "Internal Server Error" });
+            }
         });
     });
 
@@ -34,10 +38,13 @@ export default function routeGenerate() {
                 "token": req.body.token
             }
         }).then(response => {
-            res.send(response.data);
+            res.status(200).send(response.data);
         }).catch(error => {
-            console.error(error);
-            res.status(500);
+            console.error(error);if(error.response) {
+                res.status(error.response.status).send(error.response.data);
+            } else {
+                res.status(500).send({ message: "Internal Server Error" });
+            }
         });
     });
 

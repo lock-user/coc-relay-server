@@ -32,7 +32,7 @@ export default function routeGenerate() {
         }).catch(error => {
             console.error(error);
             res.status(500);
-        })
+        });
     });
 
     router.get("/clans/:tag", async (req, res) => {

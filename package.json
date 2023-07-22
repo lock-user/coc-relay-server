@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/app.ts",
   "scripts": {
-    "start": "tsc-watch --onSuccess \"node dist/app.js\"",
+    "start": "tsc-watch --onSuccess \"node dist/index.js\"",
     "build": "tsc-watch --onSuccess",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "ts-node-dev --respawn --transpile-only src/index.ts"

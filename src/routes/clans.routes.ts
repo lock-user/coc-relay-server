@@ -6,6 +6,46 @@ import asyncify from "express-asyncify";
 export default function routeGenerate() {
     const router = asyncify(Router());
 
+    router.get("/clans/:tag/currentwar/leaguegroup", async (req, res) => {
+        const clanTag = req.params.tag;
+        axios({
+            method: 'GET',
+            url: constants.API_SERVER + `clans/${encodeURIComponent(clanTag)}/currentwar/leaguegroup`,
+            headers: {
+                Authorization: `Bearer ${constants.API_TOKEN}`
+            }
+        }).then(response => {
+            res.status(200).send(response.data);
+        }).catch(error => {
+            console.error(error);
+            if(error.response) {
+                res.status(error.response.status).send(error.response.data);
+            } else {
+                res.status(500).send({ message: "Internal Server Error" });
+            }
+        });
+    });
+
+    router.get("/clanwarleagues/wars/:tag", async (req, res) => {
+        const warTag = req.params.tag;
+        axios({
+            method: 'GET',
+            url: constants.API_SERVER + `clanwarleagues/wars/${encodeURIComponent(warTag)}`,
+            headers: {
+                Authorization: `Bearer ${constants.API_TOKEN}`
+            }
+        }).then(response => {
+            res.status(200).send(response.data);
+        }).catch(error => {
+            console.error(error);
+            if(error.response) {
+                res.status(error.response.status).send(error.response.data);
+            } else {
+                res.status(500).send({ message: "Internal Server Error" });
+            }
+        });
+    });
+
     router.get("/clans", async (req, res) => {
         const queryParams = req.query;
         axios({

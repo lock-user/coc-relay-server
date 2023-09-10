@@ -24,6 +24,13 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
+# WebStorm
+*.iml
+.idea/
+misc.xml
+deploymentTargetDropDown.xml
+render.experimental.xml
+
 # local env files
 .env
 .env.local

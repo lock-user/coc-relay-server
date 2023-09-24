@@ -1,0 +1,1 @@
+// TODO clans/$clanTag api 구현 필요

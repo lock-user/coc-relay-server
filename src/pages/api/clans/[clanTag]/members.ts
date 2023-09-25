@@ -7,16 +7,22 @@ export default function handler(
     res: NextApiResponse
 ) {
     const {clanTag} = req.query;
+    const queryParams = req.query;
 
     axios({
         method: 'GET',
-        url: constants.API_SERVER + `clans/${encodeURIComponent(clanTag as string)}`,
+        url: constants.API_SERVER + `clans/${encodeURIComponent(clanTag as string)}/members`,
         headers: {
             Authorization: `Bearer ${constants.API_TOKEN}`
+        },
+        params: {
+            limit: queryParams.limit,
+            after: queryParams.after,
+            before: queryParams.before
         }
     }).then(response => {
         res.status(200).send(response.data);
     }).catch(error => {
-        res.status(error.status).send(error.data);
+        res.status(error.response.status).send(error.response.data);
     });
 }

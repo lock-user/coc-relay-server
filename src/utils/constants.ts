@@ -1,5 +1,4 @@
 export default {
-    PORT: Number(process.env.NEXT_PUBLIC_PORT || 3333),
-    API_SERVER: process.env.NEXT_PUBLIC_SERVER,
+    API_SERVER: "https://api.clashofclans.com/v1/",
     API_TOKEN: process.env.NEXT_PUBLIC_TOKEN
 }

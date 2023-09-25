@@ -23,6 +23,6 @@ export default function handler(
     }).then(response => {
         res.status(200).send(response.data);
     }).catch(error => {
-        res.status(error.response.status).send(error.response.data);
+        res.status(error.status).send(error.data);
     });
 }
